@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>設備維運數據中心 - 演示版</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="dashboard-container">
+    <header>
+        <div class="header-left">
+            <a href="index.html" class="back-btn">← 返回履歷</a>
+            <h1 style="margin-top: 15px;">設備異常回報分析系統 <span class="status-badge">內部演示版 (已去識別化)</span></h1>
+        </div>
+        <div class="header-right">
+            <div style="text-align: right;">
+                <div style="font-size: 0.8rem; color: var(--text-muted);">系統狀態</div>
+                <div style="font-size: 0.95rem; font-weight: 700; color: #fff;">● 資料來源：Google Sheets (Mock)</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- KPI Grid -->
+    <div class="kpi-grid">
+        <div class="kpi-card">
+            <div class="kpi-label">總異常件數 (Total Tickets)</div>
+            <div class="kpi-value">551</div>
+            <div class="kpi-trend trend-up">▲ 12.5% <span style="margin-left:5px; color:var(--text-muted);">較上月</span></div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">已結案數 (Closed)</div>
+            <div class="kpi-value">483</div>
+            <div class="kpi-trend trend-up">▲ 98.2% <span style="margin-left:5px; color:var(--text-muted);">解決率</span></div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">平均處理工時 (MTTR)</div>
+            <div class="kpi-value">15.7 <span style="font-size: 1rem;">min</span></div>
+            <div class="kpi-trend trend-up">▼ 4.2% <span style="margin-left:5px; color:var(--text-muted);">較去年平均</span></div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">設備最佳稼動率 (Uptime)</div>
+            <div class="kpi-value">99.4%</div>
+            <div class="kpi-trend trend-up">▲ 0.8% <span style="margin-left:5px; color:var(--text-muted);">優化成果</span></div>
+        </div>
+    </div>
+
+    <!-- Charts Grid -->
+    <div class="chart-grid">
+        <!-- Pareto Chart -->
+        <div class="chart-card">
+            <h2 class="chart-title">核心故障佔比分析 (Pareto)</h2>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 20px;">基於核心零件與模組之異常次數統計</p>
+            <canvas id="paretoChart"></canvas>
+        </div>
+
+        <!-- Trend Chart -->
+        <div class="chart-card">
+            <h2 class="chart-title">維修響應速度趨勢</h2>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 20px;">跨年度之平均修復工時變化 (Min)</p>
+            <canvas id="trendChart"></canvas>
+        </div>
+
+        <!-- Bar Chart: Geo distribution -->
+        <div class="chart-card" style="grid-column: span 2;">
+            <h2 class="chart-title">本月 TOP 10 故障高發站點 (Anonymized)</h2>
+            <canvas id="geoChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Constants for Global styling
+    const chartDefaults = {
+        color: '#94a3b8',
+        borderColor: 'rgba(255, 255, 255, 0.1)',
+        font: { family: "'Inter', sans-serif" }
+    };
+
+    // --- 1. Pareto Chart (Failure Categories) ---
+    new Chart(document.getElementById('paretoChart'), {
+        type: 'pie',
+        data: {
+            labels: ['輸送機異常', '爆倉 / 滿載', '卡電池 / 硬體阻塞', '積熱電驛跳說', '螢幕 / 畫面異常', '鐳射 / 感應器故障', '其他'],
+            datasets: [{
+                data: [17.7, 15.2, 11.8, 10.1, 9.7, 8.4, 27.1],
+                backgroundColor: [
+                    '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4', '#475569'
+                ],
+                borderWidth: 0,
+                hoverOffset: 15
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { position: 'right', labels: { color: '#f8fafc', padding: 20 } }
+            }
+        }
+    });
+
+    // --- 2. Trend Line Chart ---
+    new Chart(document.getElementById('trendChart'), {
+        type: 'line',
+        data: {
+            labels: ['1月', '2月', '3月', '4月', '5月', '6月'],
+            datasets: [{
+                label: '平均處理工時 (min)',
+                data: [22, 19, 18.5, 17, 16.2, 15.7],
+                borderColor: '#3b82f6',
+                backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                fill: true,
+                tension: 0.4,
+                borderWidth: 3,
+                pointRadius: 6,
+                pointBackgroundColor: '#fff'
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: { grid: { color: 'rgba(255,255,255,0.05)' }, border: { display: false } },
+                x: { grid: { display: false } }
+            },
+            plugins: { legend: { display: false } }
+        }
+    });
+
+    // --- 3. Geo Bar Chart (Stations) ---
+    new Chart(document.getElementById('geoChart'), {
+        type: 'bar',
+        data: {
+            labels: ['Site Alpha', 'Site Beta', 'Station Gamma', 'Station Delta', 'Zone Epsilon', 'Site Zeta', 'Station Eta', 'Site Theta', 'Zone Iota', 'Station Kappa'],
+            datasets: [{
+                label: '故障次數',
+                data: [85, 78, 77, 76, 75, 70, 68, 65, 62, 58],
+                backgroundColor: 'rgba(59, 130, 246, 0.6)',
+                borderRadius: 8,
+                hoverBackgroundColor: '#3b82f6'
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            scales: {
+                x: { grid: { color: 'rgba(255,255,255,0.05)' } },
+                y: { grid: { display: false } }
+            },
+            plugins: { legend: { display: false } }
+        }
+    });
+</script>
+
+</body>
+</html>

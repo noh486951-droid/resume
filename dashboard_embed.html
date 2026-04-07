@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --accent: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --bg-card: rgba(30, 41, 59, 0.7);
+        }
+        body { 
+            margin: 0; padding: 15px; 
+            background-color: #0f172a; 
+            font-family: 'Inter', -apple-system, sans-serif; 
+            color: var(--text-light);
+            overflow: hidden;
+        }
+        .kpi-grid { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 15px; 
+        }
+        .kpi-card { 
+            background: var(--bg-card); 
+            border-radius: 12px; 
+            padding: 20px; 
+            border: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .kpi-label { 
+            font-size: 0.75rem; 
+            color: var(--text-muted); 
+            margin-bottom: 12px; 
+            font-weight: 500;
+        }
+        .kpi-value { 
+            font-size: 1.8rem; 
+            font-weight: 800; 
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+        .kpi-unit { font-size: 0.9rem; font-weight: 600; margin-left: 4px; }
+        .kpi-trend { 
+            font-size: 0.75rem; 
+            font-weight: 600; 
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .trend-up { color: var(--accent); }
+        .trend-down { color: var(--accent); } /* Note: In your screenshot, MTTR down is green (good) */
+        
+        @media (max-width: 1000px) {
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 500px) {
+            .kpi-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="kpi-grid">
+    <div class="kpi-card">
+        <div class="kpi-label">總異常件數 (Total Tickets)</div>
+        <div class="kpi-value">551</div>
+        <div class="kpi-trend trend-up">▲ 12.5% <span style="color: var(--text-muted); font-weight: 400; margin-left: 2px;">較上月</span></div>
+    </div>
+    
+    <div class="kpi-card">
+        <div class="kpi-label">已結案數 (Closed)</div>
+        <div class="kpi-value">483</div>
+        <div class="kpi-trend trend-up">▲ 98.2% <span style="color: var(--text-muted); font-weight: 400; margin-left: 2px;">解決率</span></div>
+    </div>
+    
+    <div class="kpi-card">
+        <div class="kpi-label">平均處理工時 (MTTR)</div>
+        <div class="kpi-value">15.7 <span class="kpi-unit">min</span></div>
+        <div class="kpi-trend trend-down">▼ 4.2% <span style="color: var(--text-muted); font-weight: 400; margin-left: 2px;">較去年平均</span></div>
+    </div>
+    
+    <div class="kpi-card">
+        <div class="kpi-label">設備最佳稼動率 (Uptime)</div>
+        <div class="kpi-value">99.4%</div>
+        <div class="kpi-trend trend-up">▲ 0.8% <span style="color: var(--text-muted); font-weight: 400; margin-left: 2px;">優化成果</span></div>
+    </div>
+</div>
+
+</body>
+</html>

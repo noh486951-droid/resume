@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>李明芳 - 專業個人履歷</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Meta Descriptions for SEO -->
+    <meta name="description" content="李明芳 - 營運課長個人履歷。具備豐富的機台維修、專案管理與自動化開發經驗。擅長 GAS 與 Looker Studio。">
+    <meta name="keywords" content="李明芳, 履歷, 營運課長, 半導體設備工程, 自動化, GAS, Looker Studio">
+</head>
+
+<body>
+
+    <div class="container" id="resume-root">
+        <header>
+            <div class="header-main">
+                <h1>李明芳</h1>
+                <p
+                    style="font-weight: 600; color: var(--primary-light); margin-top: 10px; text-transform: uppercase; letter-spacing: 0.1em;">
+                    Operations Lead & Automation Developer</p>
+            </div>
+            <div class="contact-info">
+                <div>Email: <span>noh486951@gmail.com</span></div>
+                <div>Phone: <span>0908-175-116</span></div>
+                <div class="no-print" style="margin-top: 15px;">
+                    <button onclick="window.print()"
+                        style="padding: 8px 16px; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.85rem; transition: var(--transition);">
+                        列印履歷 / 保存 PDF
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <section id="summary">
+            <h2>專業總結</h2>
+            <p>具備超過 6 年的機台維護與專案管理能力。習慣從第一線的維修痛點找解方，在營運管理期間，透過自學導入 <strong>GAS</strong> 與 <strong>AI 工具</strong>開發自動化流程，替團隊省下大量重複性作業的時間。除了硬體保養與參數調校，也常擔任現場與研發端溝通的橋樑，從第一線角度回饋並優化機台設計。期望將過去在軟硬體整合、設備升級與現場管理的實務經驗，帶入設備工程領域。</p>
+        </section>
+
+        <section id="experience">
+            <h2>重點工作經歷</h2>
+
+            <div class="job-item">
+                <div class="job-header">
+                    <div class="job-title">營運課長 | 凡立橙股份有限公司</div>
+                    <div class="job-date">2019 年 10 月 – 2026 年 03 月</div>
+                </div>
+                <ul>
+                    <li><strong>自動化與機台升級執行：</strong> 執行一代至二代機台升級專案，自主開發系統自動化工具，結合資料庫與 Google Chat 機器人，成功減少 80% 的異常回報時間。
+                    </li>
+                    <li><strong>大型與專案型設備建置：</strong> 負責 20 呎貨櫃特殊機台之現場施工細節與配電規劃；完成澎湖外島專案（12 台回收機設備）之物流安排與安裝佈署。</li>
+                    <li><strong>跨部門溝通與硬體優化：</strong> 主導機台維修保養與參數規劃，彙整現場異常數據並與研發、韌體團隊落實機台修改方案。</li>
+                    <li><strong>團隊管理與教育訓練：</strong> 建立成員 ILU 技能評分機制，編寫教材並親自為部門進行教育訓練。</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="portfolio">
+            <h2>專案與作品集</h2>
+
+            <p style="font-size: 0.9rem; color: var(--secondary); background: rgba(59, 130, 246, 0.05); padding: 12px; border-radius: 8px; border-left: 4px solid var(--primary); margin-bottom: 30px;">
+                <strong>【資訊安全說明】</strong> 為保護原始企業數據隱私，以下作品集之數據皆經過<strong>去識別化 (Anonymization)</strong> 與<strong>模擬化 (Mock Data)</strong> 處理。
+            </p>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
+                        <strong>異常回報分析儀表板 (Looker Studio / Web Demo)</strong>
+                        <div style="display: flex; gap: 8px;">
+                            <span class="no-print" style="font-size: 0.75rem; color: var(--accent); font-weight: 700; background: rgba(16, 185, 129, 0.1); padding: 4px 10px; border-radius: 4px;">● LIVE 互動中</span>
+                            <a href="dashboard.html" target="_blank" class="no-print" style="font-size: 0.75rem; background: var(--primary); color: white; padding: 4px 12px; border-radius: 4px; text-decoration: none; font-weight: 700; transition: var(--transition);">查看全螢幕</a>
+                        </div>
+                    </div>
+                    <p>串接機台故障數據，即時監控關鍵績效指標 (KPI)，包含解決率、MTTR 與設備稼動率，有效掌握團隊維修效率與設備健康度。</p>
+                    
+                    <div class="dashboard-embed-container" style="width: 100%; height: 180px; background: #0f172a; border-radius: 12px; overflow: hidden; border: 1px solid var(--border);">
+                        <iframe src="dashboard_embed.html" style="width: 100%; height: 100%; border: none;"></iframe>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <strong>硬體安裝與維修進度管理系統 (GAS Web App)</strong>
+                    <p>自主開發 Web App 取代傳統表單，整合 Google Maps API 與雲端資料庫，實作零件更換看板、區域安裝比例統計與外勤距離導引功能。有效解決外勤回報痛點，極大化維修數據即時性。</p>
+                    <img src="assets/gas_tools.png" alt="Hardware Installation & Progress Tracker Interface" class="portfolio-image">
+                </div>
+            </div>
+
+            <div class="portfolio-grid" style="margin-top: 30px;">
+                <div class="portfolio-item">
+                    <strong>同仁教育訓練與技術傳承 (Technical Training)</strong>
+                    <p>每月針對課內同仁進行自動化工具使用、設備故障排除及參數維護之專題訓練。主導技術手冊編寫與 SOP 優化，建立團隊學習文化，顯著縮短新進技術人員的入職週轉期。</p>
+                    <img src="assets/training.jpg" alt="Technical Training Session Photo" class="portfolio-image">
+                </div>
+
+                <div class="portfolio-item">
+                    <strong>AI 輔助開發實踐</strong>
+                    <p>運用 Gemini、Claude、Cursor 等 AI 開發工具，進行程式碼撰寫與專案建構，展現快速學習與應用新技術解決實務問題的能力。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>專業技能</h2>
+            <div class="skills-container">
+                <div class="skill-tab"><strong>硬體：</strong>機台維修保養、異常排除、參數優化</div>
+                <div class="skill-tab"><strong>軟體：</strong>Google Apps Script (GAS)、Looker Studio</div>
+                <div class="skill-tab"><strong>管理：</strong>專案控管、ILU 評分機制、跨部門溝通、團隊考核</div>
+                <div class="skill-tab"><strong>AI 工具：</strong>Cursor, Claude, Gemini, Antigravity</div>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>教育背景</h2>
+            <div class="job-header">
+                <div class="job-title">嘉南藥理大學 | 環境管理學系</div>
+                <div class="job-date">畢業年份：[108年]</div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Subtle Micro-interaction script -->
+    <script>
+        document.querySelectorAll('.portfolio-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                console.log('Hover on semi-premium item');
+            });
+        });
+    </script>
+
+</body>
+
+</html>

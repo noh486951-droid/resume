@@ -1,0 +1,237 @@
+/* Professional Color Palette & Tokens */
+:root {
+    --primary: #1e3a8a;       /* Deep Navy */
+    --primary-light: #3b82f6; /* Bright Blue */
+    --secondary: #64748b;     /* Slate Gray */
+    --accent: #f59e0b;        /* Amber Accent */
+    --bg-main: #f8fafc;
+    --bg-card: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #475569;
+    --border: #e2e8f0;
+    --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.65;
+    color: var(--text-main);
+    background-color: var(--bg-main);
+    padding: 40px 20px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Print Optimization */
+@media print {
+    body { background: white; padding: 0; }
+    .container { box-shadow: none; max-width: 100%; border: none; }
+    .no-print { display: none; }
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: var(--bg-card);
+    padding: 60px 80px;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Premium Header Overlay */
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, var(--primary), var(--primary-light));
+}
+
+/* Header Section */
+header {
+    text-align: left;
+    margin-bottom: 50px;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--primary);
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+}
+
+.contact-info {
+    font-size: 0.95rem;
+    color: var(--secondary);
+    text-align: right;
+}
+
+.contact-info div {
+    margin-bottom: 4px;
+}
+
+.contact-info span {
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+/* Typography & Sections */
+h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 25px;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+}
+
+h2::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    margin-left: 20px;
+}
+
+p {
+    margin-bottom: 20px;
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    text-align: justify;
+}
+
+ul {
+    margin-left: 20px;
+    margin-bottom: 25px;
+    color: var(--text-muted);
+}
+
+li {
+    margin-bottom: 12px;
+    position: relative;
+}
+
+/* Job Experience Layout */
+.job-item {
+    margin-bottom: 35px;
+}
+
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 12px;
+}
+
+.job-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.job-date {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--secondary);
+}
+
+/* Portfolio & Images */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+}
+
+.portfolio-item {
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 25px;
+    border: 1px solid var(--border);
+    transition: var(--transition);
+}
+
+.portfolio-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.04);
+    border-color: var(--primary-light);
+}
+
+.portfolio-item strong {
+    display: block;
+    font-size: 1.15rem;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.portfolio-image {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin: 15px 0;
+    border: 1px solid var(--border);
+    background-color: #f1f5f9;
+}
+
+/* Skills Badges */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-tab {
+    background: var(--bg-main);
+    border: 1px solid var(--border);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.skill-tab strong {
+    color: var(--primary);
+    margin-right: 5px;
+}
+
+/* Responsive (Mobile) */
+@media (max-width: 768px) {
+    .container { padding: 40px 30px; }
+    header { flex-direction: column; align-items: flex-start; text-align: left; }
+    .contact-info { text-align: left; margin-top: 20px; }
+    h1 { font-size: 2.5rem; }
+    .job-header { flex-direction: column; }
+    .job-date { margin-top: 5px; }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+    animation: fadeIn 0.8s ease-out;
+}
