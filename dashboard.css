@@ -99,3 +99,30 @@ canvas { width: 100% !important; max-height: 400px; }
 @media (max-width: 1024px) {
     .chart-grid { grid-template-columns: 1fr; }
 }
+
+/* Print Optimization for Dashboard */
+@media print {
+    @page {
+        size: A4 landscape;
+        margin: 1cm;
+    }
+    body {
+        height: auto;
+        overflow: visible;
+        background-color: var(--bg-dark) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    .dashboard-container {
+        max-width: 100%;
+        width: 100%;
+    }
+    .kpi-card, .chart-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+    /* Ensure elements don't get horizontally cut off */
+    canvas {
+        max-width: 100%;
+    }
+}
