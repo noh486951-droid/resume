@@ -31,20 +31,39 @@ body {
 
 /* Print Optimization */
 @media print {
-    @page { margin: 1.5cm; }
-    body { background: white; padding: 0; color: #000; }
+    @page { margin: 1.2cm; }
+    body { background: white; padding: 0; color: #000; font-size: 0.95rem; }
     .container { box-shadow: none; max-width: 100%; border: none; padding: 0; }
     .container::before { display: none; }
     .no-print { display: none; }
     
     /* Prevent page breaks inside critical elements */
-    header, .job-item, .portfolio-item, .skills-container {
+    header, .job-item, .skills-container {
         break-inside: avoid;
         page-break-inside: avoid;
     }
     h2 {
         break-after: avoid;
         page-break-after: avoid;
+        margin-top: 25px;
+        margin-bottom: 15px;
+    }
+
+    /* Fix large blank spaces by adjusting layout sizes */
+    .portfolio-grid {
+        grid-template-columns: 1fr 1fr; /* 2 columns to save vertical space */
+        gap: 20px;
+    }
+    
+    .portfolio-item {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        padding: 15px;
+    }
+    
+    .portfolio-image {
+        max-height: 220px;
+        margin: 10px 0;
     }
 }
 
